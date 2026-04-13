@@ -1,0 +1,6 @@
+# Log-Based Threat Detection System
+# No external dependencies — uses Python standard library only.
+# Requires Python 3.10+
+
+# Optional: install for development / testing only
+# pytest>=7.0

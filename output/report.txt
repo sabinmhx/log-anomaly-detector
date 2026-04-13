@@ -1,0 +1,107 @@
+
+╔══════════════════════════════════════════════════════════════════════╗
+║                   LOG-BASED THREAT DETECTION SYSTEM                  ║
+║       Security Operations Center — Authentication Log Analyser       ║
+╠══════════════════════════════════════════════════════════════════════╣
+║  Log File : C:\Users\sabin\Downloads\threat_detection_system\threat_detection_v2\data\sample.log║
+║  Run Time : 2026-04-13 12:17:30                                      ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+  ▶  THREAT ALERTS
+  ────────────────────────────────────────────────────────────────────
+
+  🔴 [CRITICAL] BRUTE_FORCE  ─  IP: 185.220.101.15
+     15 failed login attempts detected (threshold: 5). Target accounts: pi.
+     ├─ Failures : 15   Successes : 0
+     ├─ Usernames tried : pi
+     └─ Window : Apr 13 08:20:00  →  Apr 13 08:20:28
+
+  🔴 [CRITICAL] CREDENTIAL_SPRAY  ─  IP: 45.33.32.156
+     Tried 8 different usernames with 8 total failures — indicative of automated credential spraying.
+     ├─ Failures : 8   Successes : 0
+     ├─ Usernames tried : admin, daemon, ftp, mysql, nobody, oracle, postgres, root
+     └─ Window : Apr 13 09:00:01  →  Apr 13 09:00:15
+
+  🟠 [HIGH] BRUTE_FORCE  ─  IP: 192.168.1.105
+     11 failed login attempts detected (threshold: 5). Target accounts: admin, root.
+     ├─ Failures : 11   Successes : 1
+     ├─ Usernames tried : admin, root
+     └─ Window : Apr 13 08:01:12  →  Apr 13 10:15:10
+
+  🟠 [HIGH] BRUTE_FORCE  ─  IP: 203.0.113.42
+     10 failed login attempts detected (threshold: 5). Target accounts: ubuntu.
+     ├─ Failures : 10   Successes : 0
+     ├─ Usernames tried : ubuntu
+     └─ Window : Apr 13 08:05:33  →  Apr 13 08:05:51
+
+  🟠 [HIGH] BRUTE_FORCE  ─  IP: 77.88.55.80
+     9 failed login attempts detected (threshold: 5). Target accounts: guest, hacker.
+     ├─ Failures : 9   Successes : 0
+     ├─ Usernames tried : guest, hacker
+     └─ Window : Apr 13 09:20:00  →  Apr 13 09:20:16
+
+  🟠 [HIGH] BRUTE_FORCE  ─  IP: 91.108.4.200
+     6 failed login attempts detected (threshold: 5). Target accounts: test.
+     ├─ Failures : 6   Successes : 0
+     ├─ Usernames tried : test
+     └─ Window : Apr 13 08:31:00  →  Apr 13 08:31:10
+
+  🟡 [MEDIUM] SUSPICIOUS_LOGIN  ─  IP: 192.168.1.105
+     Successful login recorded after 11 failures. Possible successful brute-force or credential reuse.
+     ├─ Failures : 11   Successes : 1
+     ├─ Usernames tried : admin, root
+     └─ Window : Apr 13 08:01:12  →  Apr 13 10:15:10
+
+  🟡 [MEDIUM] SUSPICIOUS_LOGIN  ─  IP: 10.0.0.2
+     Successful login recorded after 3 failures. Possible successful brute-force or credential reuse.
+     ├─ Failures : 3   Successes : 1
+     ├─ Usernames tried : backup
+     └─ Window : Apr 13 08:40:55  →  Apr 13 08:41:01
+
+  🔵 [LOW] PROBE  ─  IP: 198.51.100.77
+     3 failed attempts — possible reconnaissance or misconfigured service.
+     ├─ Failures : 3   Successes : 0
+     ├─ Usernames tried : root
+     └─ Window : Apr 13 08:10:01  →  Apr 13 08:10:05
+
+  🔵 [LOW] PROBE  ─  IP: 10.0.0.2
+     3 failed attempts — possible reconnaissance or misconfigured service.
+     ├─ Failures : 3   Successes : 1
+     ├─ Usernames tried : backup
+     └─ Window : Apr 13 08:40:55  →  Apr 13 08:41:01
+
+  ▶  IP ACTIVITY TABLE
+  ────────────────────────────────────────────────────────────────────
+
+  IP Address             Failed  Success  Usernames Status         Severity
+  ────────────────────────────────────────────────────────────────────
+  185.220.101.15                      15                 0                   1  ⚠  Suspicious            CRITICAL
+  192.168.1.105                       11                 1                   2  ⚠  Suspicious            HIGH
+  203.0.113.42                        10                 0                   1  ⚠  Suspicious            HIGH
+  77.88.55.80                          9                 0                   2  ⚠  Suspicious            HIGH
+  45.33.32.156                         8                 0                   8  ⚠  Suspicious            CRITICAL
+  91.108.4.200                         6                 0                   1  ⚠  Suspicious            HIGH
+  198.51.100.77                        3                 0                   1  🔵 Probe                  LOW
+  10.0.0.2                             3                 1                   1  ⚡ Watch                  MEDIUM
+  10.0.0.5                             0                 1                   1  ✔  Normal                —
+  10.0.0.12                            0                 1                   1  ✔  Normal                —
+  172.16.0.8                           0                 1                   1  ✔  Normal                —
+  10.10.10.50                          0                 1                   1  ✔  Normal                —
+  172.16.0.20                          0                 1                   1  ✔  Normal                —
+  10.0.0.15                            0                 1                   1  ✔  Normal                —
+
+  ▶  ANALYSIS SUMMARY
+  ────────────────────────────────────────────────────────────────────
+
+    Total IPs Observed          14
+    Total Failed Attempts       65
+    Total Successful Logins     8
+    Alerts Raised               10
+    Suspicious IPs              6
+    Detection Threshold         5 failed attempts
+
+    Flagged IPs                 185.220.101.15, 192.168.1.105, 203.0.113.42, 45.33.32.156, 77.88.55.80, 91.108.4.200
+
+  ────────────────────────────────────────────────────────────────────
+  End of Report  |  Generated by SOC Threat Detection System
+
